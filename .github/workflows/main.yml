@@ -1,16 +1,27 @@
-    # Steps represent a sequence of tasks that will be executed as part of the job
+name: Checkmarx DAST
+
+# Define the events that will trigger the workflow
+on:
+  push:
+    branches:
+      - main
+# Steps represent a sequence of tasks that will be executed as part of the job
+jobs:
+  dast-scan:
+    runs-on: ubuntu-latest
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v3
-    # Scan Iac with kics
-    - name: Checkmarx DAST Github Action
-      uses: Checkmarx/dast-github-action@v1.0.0-beta
-      env:
-        CX_APIKEY: ${{ secrets.CX_ONE_API_KEY }}
-      with:
-        command: "web"
-        config: 'WebGoat-WebTesting-ZapConf-AWS-Machine-2.yml'
-        base_url: "https://eu.ast.checkmarx.net/"
-        environment_id: "7a0b1fe4-664d-4d63-8033-59799a8f2941"
-        fail_on: "HIGH"
-        verbose: true
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Scan Iac with kics
+      - name: Checkmarx DAST Github Action
+        uses: Checkmarx/dast-github-action@v1.0.0-beta
+        env:
+          CX_APIKEY: ${{ secrets.CX_ONE_API_KEY }}
+        with:
+          command: "web"
+          config: 'WebGoat-WebTesting-ZapConf-AWS-Machine-2.yml'
+          base_url: "https://eu.ast.checkmarx.net/"
+          environment_id: "7a0b1fe4-664d-4d63-8033-59799a8f2941"
+          fail_on: "HIGH"
+          verbose: true
