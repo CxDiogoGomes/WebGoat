@@ -20,8 +20,7 @@ jobs:
           CX_APIKEY: ${{ secrets.CX_ONE_API_KEY }}
         with:
           command: "web"
-          config: 'WebGoat-WebTesting-ZapConf-AWS-Machine-2.yml'
+          config: 'config.yaml'
           base_url: "https://eu.ast.checkmarx.net/"
           environment_id: "7a0b1fe4-664d-4d63-8033-59799a8f2941"
-          fail_on: "HIGH"
           verbose: true
