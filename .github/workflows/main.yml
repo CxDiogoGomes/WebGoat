@@ -1,23 +1,12 @@
-# Steps represent a sequence of tasks that will be executed as part of the job
-steps:
-  # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-  - uses: actions/checkout@v2
-  # Scan with DAST
-  - name: run dast web
-    uses: checkmarx/dast-action@latest
-    with:
-      config: "zapconfig.yaml"
-      verbose: true
-
 name: DAST Web
 
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   run-dast:
@@ -34,7 +23,7 @@ jobs:
           CX_APIKEY: ${{ secrets.CX_ONE_API_KEY }}
         with:
           command: "web"
-          config: "WebGoat/WebTesting-ZapConf-AWS-Machine-2.yml"
+          config: 'WebGoat/WebTesting-ZapConf-AWS-Machine-2.yml'
           base_url: "localhost.cxast.net"
           environment_id: "c608a51a-ec4e-4eef-81c4-a0241737efd7"
           fail_on: "HIGH"
