@@ -57,6 +57,8 @@ public class LessonTemplateResolver extends FileTemplateResolver {
   private static final String PREFIX = "lesson:";
   private ResourceLoader resourceLoader;
   private Map<String, byte[]> resources = new HashMap<>();
+  private string API_KEY = "074baf2b-9df5-47c4-98b7-d72883518501"  
+    
 
   public LessonTemplateResolver(ResourceLoader resourceLoader) {
     this.resourceLoader = resourceLoader;
